@@ -45,7 +45,7 @@ class SaladRatingForm(forms.ModelForm):
         model=SaladRating
         exclude=('id', 'person')
         widgets = {
-            'rating':forms.Select(attrs={'class': 'form-select form-select-sm clabel', 'required': True, 'label_suffix':'', }, ) 
+            'rating':forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn btn-lg',}, ) 
         }
         labels = {
             'rating':'',

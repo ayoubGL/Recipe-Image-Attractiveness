@@ -81,8 +81,9 @@ def rate_salad(request):
     if user_selected:
         SaladRating.objects.filter(person_id= request.session['person_id']).delete()
     S = Salad.objects.all()
-    # for i in range(len(S)):
-    #     print("-------->",S[i].Name)
+    for i in range(len(S)):
+        print("-------->",S[i].Name)
+        print("-------->",S[i].image_link)
     
     
         
@@ -103,14 +104,21 @@ def rate_salad(request):
         S9 = SaladRatingForm(prefix='S9')
         S10 = SaladRatingForm(prefix='S10')
     context ={
-                        'S1': S1, 'S1':rcp[0],
-                        'S2':S2, 'S2': rcp[1],
-                        'S3':S3, 'S3': rcp[2],
-                        'S4':S4, 'S4': rcp[3],
-                        'S5':S5, 's5': rcp[4],
+                        'S1_F': S1,  's_1':S[0],
+                        'S2_F':S2,  's_2':S[1],
+                        'S3_F':S3, 's_3':S[2],
+                        'S4_F':S4, 's_4':S[3],
+                        'S5_F':S5, 's_5':S[4],
+                        
+                        'S6_F': S6,  's_6':S[5],
+                        'S7_F':S7,  's_7':S[6],
+                        'S8_F':S8, 's_8':S[7],
+                        'S9_F':S9, 's_9':S[8],
+                        'S10_F':S10, 's_10':S[9],
 
     }
   
       
   
-    return render(request, 'image_quality/rate_salad.html', context = {'form':S1})
+    return render(request, 'image_quality/rate_salad.html', context)
+# <img src="/static/images/salad/Crispy Cucumbers and Tomatoes in Dill Dressing.jpg" alt="">

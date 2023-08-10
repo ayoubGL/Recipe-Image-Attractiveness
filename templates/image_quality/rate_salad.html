@@ -43,8 +43,7 @@
         }
 
         .container {
-            /* display: flex;
-            flex-direction: row; */
+     
             max-width: 100%;
             max-height: 100%;
             margin: auto;
@@ -66,16 +65,7 @@
             box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
         }
 
-        .flex-left {
-            width: 50%;
-            /* height: 100vh; */
-        }
-
-        .flex-right {
-            width: 50%;
-            /* height: 100vh; */
-        }
-
+   
 
         .btn-lg {
             border-color: #ddba59bc !important;
@@ -100,64 +90,8 @@
 
         }
 
-        /* =---------------- */
-        /* 
-        * {
-            box-sizing: border-box;
-        } */
 
-
-
-
-        /* .courses-container {
-            border-radius: 12px 12px 12px 12px;
-            max-width: 60%;
-
-        } */
-
-        .course {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-            display: flex;
-            width: 97%;
-            height: 17%;
-            /* max-width: 100%; */
-            /* max-height: 100%; */
-            margin: 20px;
-            overflow: hidden;
-            /* width: 700px; */
-        }
-
-        .course-info h5 {
-            color: black;
-            font-weight: bold;
-        }
-
-        .items h6 {
-            color: black;
-            font-weight: bold;
-        }
-
-
-
-        .course-info {
-            padding: 0px;
-            /* position: relative; */
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .recipe_items {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .items {
-            padding: 10px;
-        }
-
+       
 
         .btn {
             background-color: #ffff;
@@ -175,25 +109,8 @@
 
 
 
-        .course-preview img {
-            width: 100%;
-            height: 100%;
-            max-width: 100%;
-            display: block;
-
-        }
-
-        .course-preview {
-            width: 300px;
-            /* border: 5px solid black; */
-        }
-
-        ul {
-            list-style: none;
-        }
-
-
-
+  
+    
 
 
 
@@ -216,12 +133,6 @@
 
 
 
-        img {
-            height: auto;
-            max-width: 100%;
-            vertical-align: middle;
-        }
-
 
 
 
@@ -229,11 +140,17 @@
             display: flex;
             flex-direction: row;
             list-style: none;
+            /* height: px; */
+            width: 100%;
             /* margin: 0; */
             /* padding: 0; */
             /* background-color: red; */
+            text-align: center;
+            margin-left: 0.5%;
+            margin-right: 0.5%;
 
-          
+
+
 
         }
 
@@ -242,6 +159,8 @@
         .cards__item {
             display: flex;
             padding: 1rem;
+            height: 100%;
+            width: 50%;
 
 
 
@@ -254,8 +173,8 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            border: 0.7px solid ;
-
+            border: 0.7px solid;
+            width: 100%;
             /* &:hover {
                 .card__image {
                     filter: contrast(100%);
@@ -270,73 +189,56 @@
             padding: 1rem;
         }
 
-        .card__image {
-            background-position: center center;
-            /* background-repeat: no-repeat; */
-            background-size: cover;
-            border-top-left-radius: 0.25rem;
-            border-top-right-radius: 0.25rem;
-            /* filter: contrast(70%); */
-            /* filter: saturate(180%); */
-            overflow: hidden;
-            position: relative;
-            transition: filter 0.5s cubic-bezier(.43, .41, .22, .91);
-            ;
+        .card__content_2 {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: row;
+            padding: 1rem;
+        }
 
-            /* &::before {
-                content: "";
-                display: block;
-                padding-top: 56.25%; // 16:9 aspect ratio
-            }
 
-            @media(min-width: 40rem) {
-                &::before {
-                    padding-top: 66.6%; // 3:2 aspect ratio
-                }
-            } */
+        .card__image img {
+            height: 500px;
+            width: 100%;
+
         }
 
 
 
-      
+
         .card__title {
             color: @gray-dark;
             font-size: 1.25rem;
             font-weight: 300;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* .card__text {
-            flex: 1 1 auto;
-            font-size: 0.875rem;
-            line-height: 1.5;
-            margin-bottom: 1.25rem;
-        } */
-
-
-        
-        
+  
     </style>
 
 
-    <script>
+    <!-- <script>
         document.getElementById("id_f_1-recipe_0").checked = true;
-    </script>
+    </script> -->
 </head>
 
 <body>
     <div class="flex-column" style="height:100%;">
-        <div>
+        <div style="text-align: -webkit-center;">
             <h3 style="font-size: 40px;
         font-weight: 400;
         line-height: 30px;
-        font-style: bold; margin-top: 30px;">Understanding Image Quality Influence </h3>
+         margin-top: 30px;">Understanding Image Quality Influence </h3>
             <br>
-            <h6>Presented below are 10 recipes in your food category. Please, <b>rate each recipe</b> in terms of how
-                likely you would be to try it (1 star: very unlikely; 7 stars: very likely) based on the food picture
-                associated with the recipes. Note that you cannot proceed until all recipes are rated <br><b> Loading
-                    the next page may take a few seconds</b>. Thank you for your patience. </h6>
+            <div style="font-size: Larger;  width: 95%; font-size: 1.em;">
+                <b>
+                    Presented below are 10 recipes in your food category. Please, rate each recipe in terms of how
+                    likely you would be to try it (1 star: very unlikely; 7 stars: very likely) based on the food
+                    picture
+                    associated with the recipes. Note that you cannot proceed until all recipes are rated Loading
+                    the next page may take a few seconds. Thank you for your patience. </b>
+            </div>
             <hr style="  border: 0; 
                 height: 1px; 
                 background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);" />
@@ -346,44 +248,168 @@
         </div>
         {% csrf_token %}
         <form action="" method="POST">
-{{form.}}
+
             <div class="container">
                 <div class="cards">
-                    <li class="cards__item">
+                    <div class="cards__item">
                         <div class="card">
-                            <div class="card__image card__image--fence"><img src="{% static 'salad/Easy and Fast Cajun Chicken Caesar Salad.jpg'%}" alt=""></div>
-                            <div class="card__content">
-                                <div class="card__title">Flex</div>
-                              
-                                <button class="btn btn--block card__btn">Rating</button>
+                            <div class="card__image card__image--fence"><img
+                                    src="{% static 'images/salad/'%}{{s_1.image_link}}" alt="">
+                                <!-- <img src="{% static 'Crispy Cucumbers and Tomatoes in Dill Dressing.jpg'%}" alt=""> -->
                             </div>
+                            <div class="card__content">
+                                <div class="card__title">{{s_1.Name}}</div>
+                                <div>Ratings: {{S1_F.rating}}</div>
+                            </div>
+
                         </div>
-                    </li>
-                    <li class="cards__item">
+                    </div>
+                    <!----------------------  2  --------------------->
+                    <div class="cards__item">
                         <div class="card">
-                            <div class="card__image card__image--river"><img src="{% static 'salad/Easy and Fast Cajun Chicken Caesar Salad.jpg'%}" alt=""></div>
-                            <div class="card__content">
-                                <div class="card__title">Flex Grow</div>
-                                
-                                <button class="btn btn--block card__btn">Rating</button>
+                            <div class="card__image card__image--fence"><img
+                                    src="{% static 'images/salad/'%}{{s_2.image_link}}" alt="">
+                                <!-- <img src="{% static 'Crispy Cucumbers and Tomatoes in Dill Dressing.jpg'%}" alt=""> -->
                             </div>
+                            <div class="card__content">
+                                <div class="card__title">{{s_2.Name}}</div>
+                                <div>Ratings: {{S2_F.rating}}</div>
+                            </div>
+
                         </div>
-                    </li>
-              
+                    </div>
                 </div>
-            </div>
-        
+                <!----------------------  3  --------------------->
+                <div class="cards">
+                    <div class="cards__item">
+                        <div class="card">
+                            <div class="card__image card__image--fence"><img
+                                    src="{% static 'images/salad/'%}{{s_3.image_link}}" alt="">
+                                <!-- <img src="{% static 'Crispy Cucumbers and Tomatoes in Dill Dressing.jpg'%}" alt=""> -->
+                            </div>
+                            <div class="card__content">
+                                <div class="card__title">{{s_3.Name}}</div>
+                                <div>Ratings: {{S3_F.rating}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!----------------------  4  --------------------->
+                    <div class="cards__item">
+                        <div class="card">
+                            <div class="card__image card__image--fence"><img
+                                    src="{% static 'images/salad/'%}{{s_4.image_link}}" alt="">
+                                <!-- <img src="{% static 'Crispy Cucumbers and Tomatoes in Dill Dressing.jpg'%}" alt=""> -->
+                            </div>
+                            <div class="card__content">
+                                <div class="card__title">{{s_4.Name}}</div>
+                                <div>Ratings: {{S4_F.rating}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!----------------------  5 --------------------->
+                <div class="cards">
+                    <div class="cards__item">
+                        <div class="card">
+                            <div class="card__image card__image--fence"><img
+                                    src="{% static 'images/salad/'%}{{s_5.image_link}}" alt="">
+                                <!-- <img src="{% static 'Crispy Cucumbers and Tomatoes in Dill Dressing.jpg'%}" alt=""> -->
+                            </div>
+                            <div class="card__content">
+                                <div class="card__title">{{s_5.Name}}</div>
+                                <div>Ratings: {{S5_F.rating}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!----------------------  6  --------------------->
+                    <div class="cards__item">
+                        <div class="card">
+                            <div class="card__image card__image--fence"><img
+                                    src="{% static 'images/salad/'%}{{s_6.image_link}}" alt="">
+                                <!-- <img src="{% static 'Crispy Cucumbers and Tomatoes in Dill Dressing.jpg'%}" alt=""> -->
+                            </div>
+                            <div class="card__content">
+                                <div class="card__title">{{s_6.Name}}</div>
+                                <div>Ratings: {{S6_F.rating}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!----------------------  7 --------------------->
+                <div class="cards">
+                    <div class="cards__item">
+                        <div class="card">
+                            <div class="card__image card__image--fence"><img
+                                    src="{% static 'images/salad/'%}{{s_7.image_link}}" alt="">
+                                <!-- <img src="{% static 'Crispy Cucumbers and Tomatoes in Dill Dressing.jpg'%}" alt=""> -->
+                            </div>
+                            <div class="card__content">
+                                <div class="card__title">{{s_7.Name}}</div>
+                                <div>Ratings: {{S7_F.rating}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!----------------------  8  --------------------->
+                    <div class="cards__item">
+                        <div class="card">
+                            <div class="card__image card__image--fence"><img
+                                    src="{% static 'images/salad/'%}{{s_8.image_link}}" alt="">
+                                <!-- <img src="{% static 'Crispy Cucumbers and Tomatoes in Dill Dressing.jpg'%}" alt=""> -->
+                            </div>
+                            <div class="card__content">
+                                <div class="card__title">{{s_8.Name}}</div>
+                                <div>Ratings: {{S8_F.rating}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!----------------------  9 --------------------->
+                <div class="cards">
+                    <div class="cards__item">
+                        <div class="card">
+                            <div class="card__image card__image--fence"><img
+                                    src="{% static 'images/salad/'%}{{s_9.image_link}}" alt="">
+                                <!-- <img src="{% static 'Crispy Cucumbers and Tomatoes in Dill Dressing.jpg'%}" alt=""> -->
+                            </div>
+                            <div class="card__content">
+                                <div class="card__title">{{s_9.Name}}</div>
+                                <div>Ratings: {{S9_F.rating}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!----------------------  10  --------------------->
+                    <div class="cards__item">
+                        <div class="card">
+                            <div class="card__image card__image--fence"><img
+                                    src="{% static 'images/salad/'%}{{s_10.image_link}}" alt="">
+                                <!-- <img src="{% static 'Crispy Cucumbers and Tomatoes in Dill Dressing.jpg'%}" alt=""> -->
+                            </div>
+                            <div class="card__content">
+                                <div class="card__title">{{s_10.Name}}</div>
+                                <div>Ratings: {{S10_F.rating}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
 
-            <div style="text-align: right; margin-bottom:40px; margin-top:30px; margin-right: 20px;">
-                <button type="submit " name="submit" class=" btn-lg col-3"> Next </buttton>
-            </div>
+                <div style="text-align: center; margin-bottom:40px; margin-top:30px;">
+                    <button type="submit " name="submit" class=" btn-lg col-3"> Next </button>
+                </div>
         </form>
-    </div> -->
-    <!------------------------- Next -------------------------
+    </div>
 
 
 
-    
+
+
 
 </body>
