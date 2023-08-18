@@ -103,11 +103,11 @@ FK__choices = [
 
 ratings = [
     (None, ''),
-    ('1','1 Strongly Disagree'),
+    ('1','1 Very Unattractive'),
     ('2','2'),
     ('3','3'),
     ('4','4'),
     ('5','5'),
     ('6','6'),
-    ('7','7 Strongly Agree')
+    ('7','7 Very Attractive')
 ]

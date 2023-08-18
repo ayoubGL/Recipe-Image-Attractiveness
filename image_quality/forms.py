@@ -4,9 +4,10 @@ from django.core.exceptions import ValidationError
 from django.db import close_old_connections, models
 from django.db.models import fields
 from django.forms import widgets
-from .models import Personal_info, Salad, SaladRating
+from .models import Personal_info, Salad, SaladRating,PastaRating,SnacksRating, DissertRating
 from django_starfield import Stars
 from django.forms import formset_factory, modelformset_factory
+from .choices import *
 
 
 class Personal_infoForm(forms.ModelForm):
@@ -22,7 +23,11 @@ class Personal_infoForm(forms.ModelForm):
             'FK_9'  : forms.Select(attrs={'class':'form-select form-select-sm clabel','required':True}),
             'FK_10' : forms.Select(attrs={'class':'form-select form-select-sm clabel','required':True}),
             'FK_11' : forms.Select(attrs={'class':'form-select form-select-sm clabel','required':True}),
-            'FK_12' : forms.Select(attrs={'class':'form-select form-select-sm clabel','required':True})
+            'FK_12' : forms.Select(attrs={'class':'form-select form-select-sm clabel','required':True}),
+            'FK_12' : forms.Select(attrs={'class':'form-select form-select-sm clabel','required':True}),
+            'FK_13' : forms.Select(attrs={'class':'form-select form-select-sm clabel','required':True}),
+            'FK_14' : forms.Select(attrs={'class':'form-select form-select-sm clabel','required':True}),
+            'FK_15' : forms.Select(attrs={'class':'form-select form-select-sm clabel','required':True}),
         }
         labels = {
             'gender': 'Gender',
@@ -31,24 +36,75 @@ class Personal_infoForm(forms.ModelForm):
             'education': 'Your highest completed education',
 
         # food knowledge
-            'FK_9' : 'Compared with an average person, I know a lot about healthy eating',
-            'FK_10': 'I think I know enough about healthy eating to feel pretty confident when choosing a recipe',
-            'FK_11': 'I know a lot about how to evaluate the healthiness of a recipe',
-            'FK_12': 'I do NOT feel very knowledgeable about healthy eating'
+            'FK_9' : 'Confidence of cooking using basic ingredients',
+            'FK_10': 'Confidence of following simple recipe',
+            'FK_11': 'Confidence of tasting new foods',
+            'FK_12': 'Confidence of cooking new foods and trying new recipes',
+            'FK_13':'The frequency of cooking main meal from raw or basic ingredients',
+            'FK_14':'Cooking enjoyment',
+            'FK_15':'Cooking satisfaction'
+                
 
         }
 
 
 class SaladRatingForm(forms.ModelForm):
-    # ratings = forms.IntegerField(required= True, widget=Stars(), error_messages={'required':'Please rate this recipe'}, label='')
+    rating = forms.ChoiceField(choices=ratings, widget=forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg', 'placeholder':'here'},))
     class Meta:
         model=SaladRating
-        exclude=('id', 'person')
+        exclude=('id', 'person','salad')
         widgets = {
-            'rating':forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn btn-lg',}, ) 
+            # 'rating':forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg', 'placeholder':'here'}, ) 
         }
         labels = {
-            'rating':'',
+            # 'rating':'',
             'image_link':'',
             'salad':''
         }
+        
+class PastaRatingForm(forms.ModelForm):
+    rating = forms.ChoiceField(choices=ratings, widget=forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg', 'placeholder':'here'},))
+    class Meta:
+        model=PastaRating
+        exclude=('id', 'person','pasta')
+        widgets = {
+            # 'rating':forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg', 'placeholder':'here'}, ) 
+        }
+        labels = {
+            # 'rating':'',
+            'image_link':'',
+            'pasta':''
+        }
+        
+        
+class SnacksRatingForm(forms.ModelForm):
+    rating = forms.ChoiceField(choices=ratings, widget=forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg', 'placeholder':'here'},))
+    class Meta:
+        model=SnacksRating
+        exclude=('id', 'person','snacks')
+        widgets = {
+            # 'rating':forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg', 'placeholder':'here'}, ) 
+        }
+        labels = {
+            # 'rating':'',
+            'image_link':'',
+            'snacks':''
+        }
+        
+        
+        
+
+class DissertRatingForm(forms.ModelForm):
+    rating = forms.ChoiceField(choices=ratings, widget=forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg', 'placeholder':'here'},))
+    class Meta:
+        model=DissertRating
+        exclude=('id', 'person','dissert')
+        widgets = {
+            # 'rating':forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg', 'placeholder':'here'}, ) 
+        }
+        labels = {
+            # 'rating':'',
+            'image_link':'',
+            'dissert':''
+        }
+        

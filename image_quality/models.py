@@ -66,6 +66,22 @@ class Personal_info(models.Model):
 			  verbose_name = 'FK_12',
 			default = None,
 			blank = False)
+    FK_13 = models.CharField(max_length = 300,
+ 			    choices = FK__choices,
+			  verbose_name = 'FK_13',
+			default = None,
+			blank = False)
+    FK_14 = models.CharField(max_length = 300,
+ 			    choices = FK__choices,
+			  verbose_name = 'FK_14',
+			default = None,
+			blank = False)
+    FK_15 = models.CharField(max_length = 300,
+ 			    choices = FK__choices,
+			  verbose_name = 'FK_15',
+			default = None,
+			blank = False)
+      
 
 
 
@@ -83,9 +99,9 @@ class Personal_info(models.Model):
     
     
 class Salad(models.Model):
-    id = models.AutoField(primary_key=True)
-    Name = models.CharField( max_length=500)
-    image_link = models.CharField( max_length=500)
+    id = models.IntegerField(primary_key=True)
+    Name = models.CharField( max_length=1000)
+    image_link = models.CharField( max_length=1000)
     # rating = models.CharField( max_length=500)
     
     class Meta:
@@ -95,14 +111,57 @@ class Salad(models.Model):
     def __str__(self):
         return self.Name
     
+    
+class Snacks(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Name = models.CharField( max_length=1000)
+    image_link = models.CharField( max_length=1000)
+    # rating = models.CharField( max_length=1000)
+    
+    class Meta:
+        verbose_name = "Snacks"
+        ordering  = ['id']
+        db_table = 'Snacks'
+    def __str__(self):
+        return self.Name
+
+
+class Pasta(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Name = models.CharField( max_length=1000)
+    image_link = models.CharField( max_length=1000)
+    # rating = models.CharField( max_length=500)
+    
+    class Meta:
+        verbose_name = "Pasta"
+        ordering  = ['id']
+        db_table = 'Pasta'
+    def __str__(self):
+        return self.Name
+    
+
+class Dissert(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Name = models.CharField( max_length=500)
+    image_link = models.CharField( max_length=500)
+    # rating = models.CharField( max_length=500)
+    
+    class Meta:
+        verbose_name = "Dissert"
+        ordering  = ['id']
+        db_table = 'Dissert'
+    def __str__(self):
+        return self.Name
+    
+
 
 class SaladRating(models.Model):
     id = models.AutoField(primary_key=True)
     # Name = models.CharField( max_length=500)
-    image_link = models.CharField( max_length=500)
+    # image_link = models.CharField( max_length=500)
     rating = models.CharField( max_length=500,
                               choices = ratings,
-                              verbose_name = 'ratings',
+                              verbose_name = 'rating',
                               default=None,
                               blank = False
                               
@@ -122,3 +181,88 @@ class SaladRating(models.Model):
         db_table = 'Saladrating'
     def __str__(self):
         return self.salad.Name
+    
+
+    
+    
+
+class PastaRating(models.Model):
+    id = models.AutoField(primary_key=True)
+    # Name = models.CharField( max_length=500)
+    # image_link = models.CharField( max_length=500)
+    rating = models.CharField( max_length=500,
+                              choices = ratings,
+                              verbose_name = 'rating',
+                              default=None,
+                              blank = False
+                              
+                              )
+    person = models.ForeignKey(
+        Personal_info,
+        on_delete=models.CASCADE
+    )
+    pasta = models.ForeignKey(
+        Pasta,
+        on_delete=models.CASCADE
+    )
+    
+    class Meta:
+        verbose_name = "Pastarating"
+        ordering  = ['id']
+        db_table = 'Pastarating'
+    def __str__(self):
+        return self.pasta.Name
+    
+class SnacksRating(models.Model):
+    id = models.AutoField(primary_key=True)
+    # Name = models.CharField( max_length=500)
+    # image_link = models.CharField( max_length=500)
+    rating = models.CharField( max_length=500,
+                              choices = ratings,
+                              verbose_name = 'rating',
+                              default=None,
+                              blank = False
+                              
+                              )
+    person = models.ForeignKey(
+        Personal_info,
+        on_delete=models.CASCADE
+    )
+    snacks = models.ForeignKey(
+        Snacks,
+        on_delete=models.CASCADE
+    )
+    
+    class Meta:
+        verbose_name = "Snacksrating"
+        ordering  = ['id']
+        db_table = 'Snacksrating'
+    def __str__(self):
+        return self.snacks.Name
+    
+class DissertRating(models.Model):
+    id = models.AutoField(primary_key=True)
+    # Name = models.CharField( max_length=500)
+    # image_link = models.CharField( max_length=500)
+    rating = models.CharField( max_length=500,
+                              choices = ratings,
+                              verbose_name = 'rating',
+                              default=None,
+                              blank = False
+                              
+                              )
+    person = models.ForeignKey(
+        Personal_info,
+        on_delete=models.CASCADE
+    )
+    dissert = models.ForeignKey(
+        Dissert,
+        on_delete=models.CASCADE
+    )
+    
+    class Meta:
+        verbose_name = "Dissertrating"
+        ordering  = ['id']
+        db_table = 'Dissertrating'
+    def __str__(self):
+        return self.dissert.Name

@@ -13,5 +13,10 @@ app_name = "image_quality"
 urlpatterns = [
     path ('', views.home, name='home'),
     path('personal_info', views.personal_info, name='personal_info'),
-    path('rate_salad', views.rate_salad,name='rate_salad')
+    path('rate_salad', views.rate_salad,name='rate_salad'),
+    path('rate_pasta', views.rate_pasta,name='rate_pasta'),
+    path('rate_snacks', views.rate_snacks,name='rate_snacks'),
+    path('rate_dissert', views.rate_dissert,name='rate_dissert'),
+    path('thank_u', views.thank_u,name='thank_u'),
+
 ]

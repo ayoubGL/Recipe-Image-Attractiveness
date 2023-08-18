@@ -45,7 +45,7 @@ def export_as_csv_action(description="Export selected objects as CSV file", fiel
 # @admin.register(Personal_info)
 class Personal_infoAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display = ('id','session_id','created','age','gender','country','education','FK_9',
-    'FK_10','FK_11','FK_12')
+    'FK_10','FK_11','FK_12','FK_13','FK_14', 'FK_15')
     actions = [export_as_csv_action("CSV Export")]
 
 class SaladAdmin(ImportExportMixin,admin.ModelAdmin):
@@ -55,13 +55,71 @@ class SaladAdmin(ImportExportMixin,admin.ModelAdmin):
    ))
     actions = [export_as_csv_action("CSV Export")]
     
-class SaladRatingAdmin(ImportExportMixin,admin.ModelAdmin):
+    
+
+class PastaAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display = (('id',
-    'rating',
+    'Name',
     'image_link',
+   ))
+    actions = [export_as_csv_action("CSV Export")]
+    
+
+class DissertAdmin(ImportExportMixin,admin.ModelAdmin):
+    list_display = (('id',
+    'Name',
+    'image_link',
+   ))
+    actions = [export_as_csv_action("CSV Export")]    
+
+
+class SnacksAdmin(ImportExportMixin,admin.ModelAdmin):
+    list_display = (('id',
+    'Name',
+    'image_link',
+   ))
+    actions = [export_as_csv_action("CSV Export")]
+    
+class SaladRatingAdmin(ImportExportMixin,admin.ModelAdmin):
+    list_display = (('id', 'person',
+    'rating','salad',
+    # 'image_link',
     ))
     actions = [export_as_csv_action("CSV Export")]
+    
+class PastaRatingAdmin(ImportExportMixin,admin.ModelAdmin):
+    list_display = (('id', 'person',
+    'rating','pasta',
+    # 'image_link',
+    ))
+    actions = [export_as_csv_action("CSV Export")] 
+    
+
+class DissertRatingAdmin(ImportExportMixin,admin.ModelAdmin):
+    list_display = (('id', 'person',
+    'rating','dissert',
+    # 'image_link',
+    ))
+    actions = [export_as_csv_action("CSV Export")]  
+    
+class SnacksRatingAdmin(ImportExportMixin,admin.ModelAdmin):
+    list_display = (('id', 'person',
+    'rating','snacks',
+    # 'image_link',
+    ))
+    actions = [export_as_csv_action("CSV Export")]  
 
 admin.site.register(Personal_info, Personal_infoAdmin)
+
 admin.site.register(Salad, SaladAdmin)
 admin.site.register(SaladRating, SaladRatingAdmin)
+
+admin.site.register(Pasta, PastaAdmin)
+admin.site.register(PastaRating, PastaRatingAdmin)
+
+admin.site.register(Snacks, SnacksAdmin)
+admin.site.register(SnacksRating, SnacksRatingAdmin)
+
+admin.site.register(Dissert, DissertAdmin)
+admin.site.register(DissertRating, DissertRatingAdmin)
+

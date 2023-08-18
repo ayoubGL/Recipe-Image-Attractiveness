@@ -43,7 +43,7 @@
         }
 
         .container {
-     
+            width: 90%;
             max-width: 100%;
             max-height: 100%;
             margin: auto;
@@ -141,7 +141,7 @@
             flex-direction: row;
             list-style: none;
             /* height: px; */
-            width: 100%;
+            width: 90%;
             /* margin: 0; */
             /* padding: 0; */
             /* background-color: red; */
@@ -229,26 +229,24 @@
             <h3 style="font-size: 40px;
         font-weight: 400;
         line-height: 30px;
-         margin-top: 30px;">Understanding Image Quality Influence </h3>
+         margin-top: 30px;">Judging Recipe Image Attractiveness </h3>
             <br>
-            <div style="font-size: Larger;  width: 95%; font-size: 1.em;">
-                <b>
-                    Presented below are 10 recipes in your food category. Please, rate each recipe in terms of how
-                    likely you would be to try it (1 star: very unlikely; 7 stars: very likely) based on the food
-                    picture
-                    associated with the recipes. Note that you cannot proceed until all recipes are rated Loading
-                    the next page may take a few seconds. Thank you for your patience. </b>
+            <div >
+                <p style="font-size: Larger;  width: 95%; font-size: 1.5em;">
+                    Presented below are 10 recipes in the food category "Salad". Please, rate each recipe shown below in terms 
+                    visual attractiveness of the associated image (1 star: very unattractive; 7 stars: very attractive). Note that you cannot proceed until all recipes are rated.</p> 
+                    <i> Loading the next page may take a few seconds. </i>
             </div>
             <hr style="  border: 0; 
                 height: 1px; 
                 background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);" />
 
-            <h4>Food Category: Salad
+            <h4>Food Category: <b style="font-size: xx-large;">Salad</b>
             </h4>
         </div>
-        {% csrf_token %}
+   
         <form action="" method="POST">
-
+     {% csrf_token %}
             <div class="container">
                 <div class="cards">
                     <div class="cards__item">
@@ -259,7 +257,7 @@
                             </div>
                             <div class="card__content">
                                 <div class="card__title">{{s_1.Name}}</div>
-                                <div>Ratings: {{S1_F.rating}}</div>
+                                <div>Image attractiveness: {{S1_F.rating}}</div>
                             </div>
 
                         </div>
@@ -273,7 +271,7 @@
                             </div>
                             <div class="card__content">
                                 <div class="card__title">{{s_2.Name}}</div>
-                                <div>Ratings: {{S2_F.rating}}</div>
+                                <div>Image attractiveness: {{S2_F.rating}}</div>
                             </div>
 
                         </div>
@@ -289,7 +287,7 @@
                             </div>
                             <div class="card__content">
                                 <div class="card__title">{{s_3.Name}}</div>
-                                <div>Ratings: {{S3_F.rating}}</div>
+                                <div>Image attractiveness: {{S3_F.rating}}</div>
                             </div>
 
                         </div>
@@ -303,7 +301,7 @@
                             </div>
                             <div class="card__content">
                                 <div class="card__title">{{s_4.Name}}</div>
-                                <div>Ratings: {{S4_F.rating}}</div>
+                                <div>Image attractiveness: {{S4_F.rating}}</div>
                             </div>
 
                         </div>
@@ -319,7 +317,7 @@
                             </div>
                             <div class="card__content">
                                 <div class="card__title">{{s_5.Name}}</div>
-                                <div>Ratings: {{S5_F.rating}}</div>
+                                <div>Image attractiveness: {{S5_F.rating}}</div>
                             </div>
 
                         </div>
@@ -333,7 +331,7 @@
                             </div>
                             <div class="card__content">
                                 <div class="card__title">{{s_6.Name}}</div>
-                                <div>Ratings: {{S6_F.rating}}</div>
+                                <div>Image attractiveness: {{S6_F.rating}}</div>
                             </div>
 
                         </div>
@@ -350,7 +348,7 @@
                             </div>
                             <div class="card__content">
                                 <div class="card__title">{{s_7.Name}}</div>
-                                <div>Ratings: {{S7_F.rating}}</div>
+                                <div>Image attractiveness: {{S7_F.rating}}</div>
                             </div>
 
                         </div>
@@ -364,7 +362,7 @@
                             </div>
                             <div class="card__content">
                                 <div class="card__title">{{s_8.Name}}</div>
-                                <div>Ratings: {{S8_F.rating}}</div>
+                                <div>Image attractiveness: {{S8_F.rating}}</div>
                             </div>
 
                         </div>
@@ -380,7 +378,7 @@
                             </div>
                             <div class="card__content">
                                 <div class="card__title">{{s_9.Name}}</div>
-                                <div>Ratings: {{S9_F.rating}}</div>
+                                <div>Image attractiveness: {{S9_F.rating}}</div>
                             </div>
                         </div>
                     </div>
@@ -393,7 +391,7 @@
                             </div>
                             <div class="card__content">
                                 <div class="card__title">{{s_10.Name}}</div>
-                                <div>Ratings: {{S10_F.rating}}</div>
+                                <div>Image attractiveness: {{S10_F.rating}}</div>
                             </div>
                         </div>
                     </div>
