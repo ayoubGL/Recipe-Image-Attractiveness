@@ -109,6 +109,15 @@ class SnacksRatingAdmin(ImportExportMixin,admin.ModelAdmin):
     ))
     actions = [export_as_csv_action("CSV Export")]  
 
+
+class recipesAdmin(ImportExportMixin, admin.ModelAdmin):
+    list_display = (('id','Name','image_link'))
+    actions = [export_as_csv_action("CSV Export")]
+    
+class recipesRatingAdmin(ImportExportMixin, admin.ModelAdmin):
+    list_display = (('id','person','recipes','rating','judging'))
+    actions = [export_as_csv_action("CSV Export")]
+
 admin.site.register(Personal_info, Personal_infoAdmin)
 
 admin.site.register(Salad, SaladAdmin)
@@ -123,3 +132,5 @@ admin.site.register(SnacksRating, SnacksRatingAdmin)
 admin.site.register(Dissert, DissertAdmin)
 admin.site.register(DissertRating, DissertRatingAdmin)
 
+admin.site.register(recipes, recipesAdmin)
+admin.site.register(recipesRating, recipesRatingAdmin)

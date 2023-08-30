@@ -289,3 +289,49 @@ class DissertRating(models.Model):
         db_table = 'Dissertrating'
     def __str__(self):
         return self.dissert.Name
+    
+
+
+class recipes(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Name = models.CharField( max_length=1000)
+    image_link = models.CharField( max_length=1000)
+    # rating = models.CharField( max_length=500)
+    
+    class Meta:
+        verbose_name = "recipes"
+        ordering  = ['id']
+        db_table = 'recipes'
+    def __str__(self):
+        return self.Name
+
+class  recipesRating(models.Model):
+    id = models.AutoField(primary_key=True)
+    rating = models.CharField( max_length=500,
+                              choices = ratings,
+                              verbose_name = 'rating',
+                              default=None,
+                              blank = False
+                              
+                              )
+    person = models.ForeignKey(
+        Personal_info,
+        on_delete=models.CASCADE
+    )
+    recipes = models.ForeignKey(
+        recipes,
+        on_delete=models.CASCADE
+    )
+    judging = models.CharField(
+        max_length=500,
+        verbose_name='judging',
+        default=None,
+        blank=False
+    )
+    
+    class Meta:
+        verbose_name = "Ratings"
+        ordering  = ['id']
+        db_table = 'recipesRatings'
+    def __str__(self):
+        return self.recipes.Name

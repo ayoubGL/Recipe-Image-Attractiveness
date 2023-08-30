@@ -17,6 +17,7 @@ urlpatterns = [
     path('rate_pasta', views.rate_pasta,name='rate_pasta'),
     path('rate_snacks', views.rate_snacks,name='rate_snacks'),
     path('rate_dissert', views.rate_dissert,name='rate_dissert'),
+    path('rate_recipes',views.rate_recipes, name='rate_recipes'),
     path('thank_u', views.thank_u,name='thank_u'),
 
 ]
