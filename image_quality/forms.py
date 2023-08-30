@@ -41,19 +41,22 @@ class Personal_infoForm(forms.ModelForm):
             'FK_11': 'Confidence of tasting new foods',
             'FK_12': 'Confidence of cooking new foods and trying new recipes',
             'FK_13':'The frequency of cooking main meal from raw or basic ingredients',
-            'FK_14':'Cooking enjoyment',
-            'FK_15':'Cooking satisfaction'
+            'FK_14':'Do you enjoy cooking',
+            'FK_15':'Are you satisfied with you cooking skills'
                 
 
         }
 
 
 class SaladRatingForm(forms.ModelForm):
-    rating = forms.ChoiceField(choices=ratings, widget=forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg', 'placeholder':'here'},))
+    rating = forms.ChoiceField(choices=ratings, widget=forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg', },))
+    
     class Meta:
         model=SaladRating
         exclude=('id', 'person','salad')
         widgets = {
+            
+            'judging': forms.Textarea(attrs={'required': True, 'label_suffix':'', 'class':'btn-lgT', 'placeholder':'here', 'rows':5, 'cols':30,})
             # 'rating':forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg', 'placeholder':'here'}, ) 
         }
         labels = {
@@ -63,7 +66,7 @@ class SaladRatingForm(forms.ModelForm):
         }
         
 class PastaRatingForm(forms.ModelForm):
-    rating = forms.ChoiceField(choices=ratings, widget=forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg', 'placeholder':'here'},))
+    rating = forms.ChoiceField(choices=ratings, widget=forms.Select(attrs={'required': True, 'label_suffix':'', 'class':'btn-lg',},))
     class Meta:
         model=PastaRating
         exclude=('id', 'person','pasta')

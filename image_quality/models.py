@@ -174,6 +174,12 @@ class SaladRating(models.Model):
         Salad,
         on_delete=models.CASCADE
     )
+    judging = models.CharField(
+        max_length=500,
+        verbose_name='judging',
+        default=None,
+        blank=False
+    )
     
     class Meta:
         verbose_name = "saladrating"
@@ -205,6 +211,12 @@ class PastaRating(models.Model):
         Pasta,
         on_delete=models.CASCADE
     )
+    judging = models.CharField(
+        max_length=500,
+        verbose_name='judging',
+        default=None,
+        blank=False
+    )
     
     class Meta:
         verbose_name = "Pastarating"
@@ -232,7 +244,12 @@ class SnacksRating(models.Model):
         Snacks,
         on_delete=models.CASCADE
     )
-    
+    judging = models.CharField(
+        max_length=500,
+        verbose_name='judging',
+        default=None,
+        blank=False
+    )
     class Meta:
         verbose_name = "Snacksrating"
         ordering  = ['id']
@@ -258,6 +275,12 @@ class DissertRating(models.Model):
     dissert = models.ForeignKey(
         Dissert,
         on_delete=models.CASCADE
+    )
+    judging = models.CharField(
+        max_length=500,
+        verbose_name='judging',
+        default=None,
+        blank=False
     )
     
     class Meta:

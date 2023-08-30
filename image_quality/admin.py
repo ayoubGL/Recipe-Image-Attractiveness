@@ -82,14 +82,14 @@ class SnacksAdmin(ImportExportMixin,admin.ModelAdmin):
     
 class SaladRatingAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display = (('id', 'person',
-    'rating','salad',
+    'rating','salad','judging'
     # 'image_link',
     ))
     actions = [export_as_csv_action("CSV Export")]
     
 class PastaRatingAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display = (('id', 'person',
-    'rating','pasta',
+    'rating','pasta','judging'
     # 'image_link',
     ))
     actions = [export_as_csv_action("CSV Export")] 
@@ -97,14 +97,14 @@ class PastaRatingAdmin(ImportExportMixin,admin.ModelAdmin):
 
 class DissertRatingAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display = (('id', 'person',
-    'rating','dissert',
+    'rating','dissert','judging'
     # 'image_link',
     ))
     actions = [export_as_csv_action("CSV Export")]  
     
 class SnacksRatingAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display = (('id', 'person',
-    'rating','snacks',
+    'rating','snacks','judging'
     # 'image_link',
     ))
     actions = [export_as_csv_action("CSV Export")]  

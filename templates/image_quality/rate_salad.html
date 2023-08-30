@@ -91,7 +91,29 @@
         }
 
 
-       
+         .btn-lgT {
+            border-color: #ddba59bc !important;
+            background: #fbfbfb;
+            color: #1f4037;
+            /* padding:15px ; */
+            margin: auto;
+            /* #font-size: 20px; */
+            border: 0.2em solid;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px 8px 8px 8px;
+
+        }
+
+        /* .btn-lg:hover {
+            background-image: none !important;
+            background-color: #ddba59bc !important;
+           
+            color: rgb(233, 225, 225);
+
+        } */
+
 
         .btn {
             background-color: #ffff;
@@ -175,11 +197,8 @@
             overflow: hidden;
             border: 0.7px solid;
             width: 100%;
-            /* &:hover {
-                .card__image {
-                    filter: contrast(100%);
-                }
-            } */
+            height: 700px;
+           
         }
 
         .card__content {
@@ -198,8 +217,13 @@
 
 
         .card__image img {
-            height: 500px;
-            width: 100%;
+          /* max-height: 500px; */
+            /* width: 100%; */
+            width: 400px;
+            /* max-width: 500px; */
+            height: 400px;
+            object-fit: contain;
+        
 
         }
 
@@ -207,11 +231,15 @@
 
 
         .card__title {
-            color: @gray-dark;
+            /* color: @gray-dark; */
             font-size: 1.25rem;
             font-weight: 300;
             letter-spacing: 1px;
             text-transform: uppercase;
+            top: 50%;
+            left: 50%;
+            /* transform: translate(-50%, -50%); */
+            /* padding: 10px; */
         }
 
   
@@ -241,7 +269,7 @@
                 height: 1px; 
                 background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);" />
 
-            <h4>Food Category: <b style="font-size: xx-large;">Salad</b>
+            <!-- <h4>Food Category: <b style="font-size: xx-large;">Salad</b> -->
             </h4>
         </div>
    
@@ -258,6 +286,7 @@
                             <div class="card__content">
                                 <div class="card__title">{{s_1.Name}}</div>
                                 <div>Image attractiveness: {{S1_F.rating}}</div>
+                                <div style="margin-top: 3px;">{{S1_F.judging}}</div>
                             </div>
 
                         </div>
@@ -272,6 +301,7 @@
                             <div class="card__content">
                                 <div class="card__title">{{s_2.Name}}</div>
                                 <div>Image attractiveness: {{S2_F.rating}}</div>
+                                <div style="margin-top: 3px;">{{S2_F.judging}}</div>
                             </div>
 
                         </div>
@@ -288,6 +318,7 @@
                             <div class="card__content">
                                 <div class="card__title">{{s_3.Name}}</div>
                                 <div>Image attractiveness: {{S3_F.rating}}</div>
+                                <div style="margin-top: 3px;">{{S3_F.judging}}</div>
                             </div>
 
                         </div>
@@ -302,6 +333,7 @@
                             <div class="card__content">
                                 <div class="card__title">{{s_4.Name}}</div>
                                 <div>Image attractiveness: {{S4_F.rating}}</div>
+                                <div style="margin-top: 3px;">{{S4_F.judging}}</div>
                             </div>
 
                         </div>
@@ -318,6 +350,7 @@
                             <div class="card__content">
                                 <div class="card__title">{{s_5.Name}}</div>
                                 <div>Image attractiveness: {{S5_F.rating}}</div>
+                                <div style="margin-top: 3px;">{{S5_F.judging}}</div>
                             </div>
 
                         </div>
@@ -332,6 +365,7 @@
                             <div class="card__content">
                                 <div class="card__title">{{s_6.Name}}</div>
                                 <div>Image attractiveness: {{S6_F.rating}}</div>
+                                <div style="margin-top: 3px;">{{S6_F.judging}}</div>
                             </div>
 
                         </div>
@@ -349,6 +383,7 @@
                             <div class="card__content">
                                 <div class="card__title">{{s_7.Name}}</div>
                                 <div>Image attractiveness: {{S7_F.rating}}</div>
+                                <div style="margin-top: 3px;">{{S7_F.judging}}</div>
                             </div>
 
                         </div>
@@ -363,6 +398,7 @@
                             <div class="card__content">
                                 <div class="card__title">{{s_8.Name}}</div>
                                 <div>Image attractiveness: {{S8_F.rating}}</div>
+                                <div style="margin-top: 3px;">{{S8_F.judging}}</div>
                             </div>
 
                         </div>
@@ -379,6 +415,7 @@
                             <div class="card__content">
                                 <div class="card__title">{{s_9.Name}}</div>
                                 <div>Image attractiveness: {{S9_F.rating}}</div>
+                                <div style="margin-top: 3px;">{{S9_F.judging}}</div>
                             </div>
                         </div>
                     </div>
@@ -392,6 +429,7 @@
                             <div class="card__content">
                                 <div class="card__title">{{s_10.Name}}</div>
                                 <div>Image attractiveness: {{S10_F.rating}}</div>
+                                <div style="margin-top: 3px;">{{S10_F.judging}}</div>
                             </div>
                         </div>
                     </div>

@@ -130,7 +130,7 @@ def rate_salad(request):
         S_r9 = SaladRating()
         S_r10 = SaladRating()
         
-        # print('------------',S1.cleaned_data.get('rating'))
+        print('------------',S2.is_valid())
         
         if S1.is_valid() and S2.is_valid() and S3.is_valid() and S4.is_valid() and  S5.is_valid() and S6.is_valid() and S7.is_valid() and S8.is_valid() and S9.is_valid() and S10.is_valid() :
             person = Personal_info.objects.get(id=request.session['person_id'])
@@ -139,45 +139,55 @@ def rate_salad(request):
                 
             S_r1.salad_id = S[0].id
             S_r1.rating = S1.cleaned_data.get('rating')
-            # print('-----Ratings--',S_r1.rating )
+            S_r1.judging = S1.cleaned_data.get('judging')
+            print('-----Ratings--',S_r1.judging )
             S_r1.save()
             
             S_r2.salad_id = S[1].id
             S_r2.rating = S2.cleaned_data.get('rating')
+            S_r2.judging = S2.cleaned_data.get('judging')
             S_r2.save()       
                     
             S_r3.salad_id = S[2].id
             S_r3.rating = S3.cleaned_data.get('rating')
+            S_r3.judging = S3.cleaned_data.get('judging')
             S_r3.save()
             
             
             S_r4.salad_id = S[3].id
             S_r4.rating = S4.cleaned_data.get('rating')
+            S_r4.judging = S4.cleaned_data.get('judging')
             S_r4.save()
                     
             S_r5.salad_id = S[4].id
             S_r5.rating = S5.cleaned_data.get('rating')
+            S_r5.judging = S5.cleaned_data.get('judging')
             S_r5.save()
 
             S_r6.salad_id = S[5].id
             S_r6.rating = S6.cleaned_data.get('rating')
+            S_r6.judging = S6.cleaned_data.get('judging')
             S_r6.save()
             
             S_r7.salad_id = S[6].id
             S_r7.rating = S7.cleaned_data.get('rating')
+            S_r7.judging = S7.cleaned_data.get('judging')
             S_r7.save()
             
             S_r8.salad_id = S[7].id
             S_r8.rating = S8.cleaned_data.get('rating')
+            S_r8.judging = S8.cleaned_data.get('judging')
             S_r8.save()
             
             S_r9.salad_id = S[8].id
             S_r9.rating = S9.cleaned_data.get('rating')
+            S_r9.judging = S9.cleaned_data.get('judging')
             S_r9.save()
             
             
             S_r10.salad_id = S[9].id
             S_r10.rating = S10.cleaned_data.get('rating')
+            S_r10.judging = S10.cleaned_data.get('judging')
             S_r10.save()
             return redirect('image_quality:rate_pasta')
         else: 
