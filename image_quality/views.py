@@ -16,15 +16,16 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from pandas.core.indexes import category
 import itertools
-from .forms import Personal_infoForm, SaladRatingForm, PastaRatingForm, DissertRatingForm, SnacksRatingForm, recipesRatingForm
+from .forms import Personal_infoForm, SaladRatingForm, PastaRatingForm, DissertRatingForm, SnacksRatingForm, recipesRatingForm, Ghs_fkForm
 
-from .models import  Personal_info,  Salad, Snacks, Pasta, Dissert, PastaRating, DissertRating, SnacksRating, SaladRating, recipes, recipesRating
+from .models import  Personal_info,  Salad, Snacks, Pasta, Dissert, PastaRating, DissertRating, SnacksRating, SaladRating, recipes, recipesRating, Ghs_fk
 # from .app import *
 # Create your views here.
 # person_id = 0
 import string
 import random
 import re
+from django.core.cache import cache
 # Create your views here.
 
 
@@ -77,10 +78,42 @@ def personal_info(request):
 
             request.session['person_id'] = answer.id
             # return redirect('image_quality:rate_salad')
-            return redirect('image_quality:rate_recipes')
+            return redirect('image_quality:ghs_fk')
     else:
         personl_info = Personal_infoForm()
     return render(request, 'image_quality/personal_info.html', context={'form': personl_info})
+
+
+def ghs_fk(request):
+    user_selected = Ghs_fk.objects.filter(id = request.session['person_id'])
+    if user_selected:
+        ghs_fk.objects.filter(id=request.session['person_id']).delete()
+    if request.method == 'POST':
+        ghs_fk_form = Ghs_fkForm(request.POST)
+        #print('------- Here')
+        if ghs_fk_form.is_valid():
+            answer = ghs_fk_form.save(commit=False)
+
+            rd_str = ''.join(random.choice(string.ascii_lowercase) for _ in range(5))
+            time_now = datetime.now().strftime('%H%M%S')
+            gene_session = 'dars' +  time_now + '_' + str(answer.id) + rd_str
+            ghs_fk_form.instance.session_id = gene_session
+            ghs_fk_form.instance.person_id = request.session['person_id']
+            #print(';;;;;;;;;;;here')
+            answer = ghs_fk_form.save(commit = True)
+
+            #request.session['person_id'] = answer.id
+            return redirect('image_quality:rate_recipes')
+        else:
+            print('not valid')
+    else:
+        ghs_fk_form = Ghs_fkForm()
+    return render(request, 'image_quality/Personal_knowledge.html', context={'form':ghs_fk_form})
+
+
+
+
+
 
 def rate_salad(request):
     user_selected  = SaladRating.objects.filter(person_id= request.session['person_id'])
@@ -601,36 +634,20 @@ def rate_dissert(request):
 
 def rate_recipes(request):
     print( request.session['n'])
-    # request.session['n'] += 1
-    # user_selected  = recipesRating.objects.filter(person_id= request.session['person_id'])
-    # if user_selected:
-    #     recipesRating.objects.filter(person_id= request.session['person_id']).delete()
+    
+    user_selected  = recipesRating.objects.filter(person_id= request.session['person_id'])
     
     
-    rated_ones = recipesRating.objects.all()
-    
-    
-    notRated =  recipes.objects.exclude(id__in=rated_ones.values('recipes'))
-    S = notRated
-    
+   
     if request.method == "POST":    
         S1 = recipesRatingForm(request.POST, prefix='S1')
-        
         S2 = recipesRatingForm(request.POST,prefix='S2')
         S3 = recipesRatingForm(request.POST,prefix='S3')
         S4 = recipesRatingForm(request.POST,prefix='S4')
         S5 = recipesRatingForm(request.POST,prefix='S5')
         S6 = recipesRatingForm(request.POST,prefix='S6')
-        S7 = recipesRatingForm(request.POST,prefix='S7')
-        S8 = recipesRatingForm(request.POST,prefix='S8')
-        S9 = recipesRatingForm(request.POST,prefix='S9')
-        S10 = recipesRatingForm(request.POST,prefix='S10')
+
         
-        # if S1.is_valid():
-        #     print('------------',S1.cleaned_data.get('rating'))
-        # else:
-        #     print('-----ELSE-------',S1.cleaned_data.get('rating'))
-        #     print('----------', S[0].id)
         
         S_r1 = recipesRating()
         S_r2 = recipesRating()
@@ -638,29 +655,23 @@ def rate_recipes(request):
         S_r4 = recipesRating()
         S_r5 = recipesRating()
         S_r6 = recipesRating()
-        S_r7 = recipesRating()
-        S_r8 = recipesRating()
-        S_r9 = recipesRating()
-        S_r10 = recipesRating()
+
         
-        # print('------------',S1.cleaned_data.get('rating'))
-        
-        if S1.is_valid() and S2.is_valid() and S3.is_valid() and S4.is_valid() and  S5.is_valid() and S6.is_valid() and S7.is_valid() and S8.is_valid() and S9.is_valid() and S10.is_valid() :
+        if S1.is_valid() and S2.is_valid() and S3.is_valid() and S4.is_valid() and  S5.is_valid() and S6.is_valid(): 
             person = Personal_info.objects.get(id=request.session['person_id'])
+            # person  = recipesRating.objects.filter(person_id= request.session['person_id']).values_list('person_id')
         
-            S_r1.person = S_r2.person =S_r3.person=S_r4.person=S_r5.person=S_r6.person=S_r7.person=S_r8.person=S_r2.person=S_r9.person=S_r10.person = person
+            S_r1.person = S_r2.person =S_r3.person=S_r4.person=S_r5.person= S_r6.person=person
             
-         
+            S = cache.get('S')
+            print(S)
+            # S = request.session['rated']
+            # print('S',S)
                 
             S_r1.recipes_id = S[0].id
             S_r1.rating = S1.cleaned_data.get('rating')
             S_r1.judging = S1.cleaned_data.get('judging')
-            
-            # print( S_r1.person,S_r1.rating, S_r1.judging, S_r1.recipes_id)
-            
             S_r1.save()
-            
-            
             
             S_r2.recipes_id = S[1].id
             S_r2.rating = S2.cleaned_data.get('rating')
@@ -688,29 +699,8 @@ def rate_recipes(request):
             S_r6.judging = S6.cleaned_data.get('judging')
             S_r6.save()
             
-            S_r7.recipes_id = S[6].id
-            S_r7.rating = S7.cleaned_data.get('rating')
-            S_r7.judging = S7.cleaned_data.get('judging')
-            S_r7.save()
-            
-            S_r8.recipes_id = S[7].id
-            S_r8.rating = S8.cleaned_data.get('rating')
-            S_r8.judging = S8.cleaned_data.get('judging')
-            S_r8.save()
-            
-            S_r9.recipes_id = S[8].id
-            S_r9.rating = S9.cleaned_data.get('rating')
-            S_r9.judging = S9.cleaned_data.get('judging')
-            S_r9.save()
-            
-            
-            S_r10.recipes_id = S[9].id
-            S_r10.rating = S10.cleaned_data.get('rating')
-            S_r10.judging = S10.cleaned_data.get('judging')
-            S_r10.save()
-            
-            print('#######-N-####',request.session['n'])
-            if request.session['n'] == 9:
+            # print('#######-N-####',request.session['n'])
+            if request.session['n'] == 5:
                 return redirect('image_quality:thank_u')
             else :
                 request.session['n'] += 1
@@ -719,35 +709,42 @@ def rate_recipes(request):
             print('--------->>not valid')
             
     else:
-       
+        user_selected  = recipesRating.objects.filter(person_id= request.session['person_id']).values_list('person_id')
+        # print('-------------->>',user_selected[0][0], request.session['person_id'])
+        
+        if user_selected:
+            print('------', user_selected[0][0], request.session['person_id'])
+            #person_id = request.session['person_id']
+            unique_rate = recipesRating.objects.filter(person_id = request.session['person_id'])
+            # print('------ uniiiique :',unique_rate,len(unique_rate))
+            notRated =  recipes.objects.exclude(id__in=unique_rate.values('recipes')).order_by('?')
+            # print('---------',notRated)
+            S = notRated
+            cache.set('S',S)
+            
+        else:
+            S =  recipes.objects.all().order_by('?')
+            print('All--->',S)
+            cache.set('S',S)
+            # request.session['recipes'] = list(S)
+
         S1 = recipesRatingForm(prefix='S1')
         S2 = recipesRatingForm(prefix='S2')
         S3 = recipesRatingForm(prefix='S3')
         S4 = recipesRatingForm(prefix='S4')
         S5 = recipesRatingForm(prefix='S5')
         S6 = recipesRatingForm(prefix='S6')
-        S7 = recipesRatingForm(prefix='S7')
-        S8 = recipesRatingForm(prefix='S8')
-        S9 = recipesRatingForm(prefix='S9')
-        S10 = recipesRatingForm(prefix='S10')
-    context ={
+
+        context ={
                         'S1_F': S1,  's_1':S[0],
                         'S2_F':S2,  's_2':S[1],
                         'S3_F':S3, 's_3':S[2],
                         'S4_F':S4, 's_4':S[3],
                         'S5_F':S5, 's_5':S[4],
-                        
                         'S6_F': S6,  's_6':S[5],
-                        'S7_F':S7,  's_7':S[6],
-                        'S8_F':S8, 's_8':S[7],
-                        'S9_F':S9, 's_9':S[8],
-                        'S10_F':S10, 's_10':S[9],
+                }
 
-    }
-  
-      
-  
-    return render(request, 'image_quality/rate_recipes.html', context)
+        return render(request, 'image_quality/rate_recipes.html', context)
     
 
 

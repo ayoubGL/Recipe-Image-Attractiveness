@@ -44,8 +44,7 @@ def export_as_csv_action(description="Export selected objects as CSV file", fiel
 
 # @admin.register(Personal_info)
 class Personal_infoAdmin(ImportExportMixin,admin.ModelAdmin):
-    list_display = ('id','session_id','created','age','gender','country','education','FK_9',
-    'FK_10','FK_11','FK_12','FK_13','FK_14', 'FK_15')
+    list_display = ('id','session_id','created','age','gender','country','education')
     actions = [export_as_csv_action("CSV Export")]
 
 class SaladAdmin(ImportExportMixin,admin.ModelAdmin):
@@ -115,7 +114,7 @@ class recipesAdmin(ImportExportMixin, admin.ModelAdmin):
     actions = [export_as_csv_action("CSV Export")]
     
 class recipesRatingAdmin(ImportExportMixin, admin.ModelAdmin):
-    list_display = (('id','person','recipes','rating','judging'))
+    list_display = (('id','person','recipes_id','rating','judging'))
     actions = [export_as_csv_action("CSV Export")]
 
 admin.site.register(Personal_info, Personal_infoAdmin)

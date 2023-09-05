@@ -46,41 +46,41 @@ class Personal_info(models.Model):
                               default=None,
                               blank=False
                               )
-    FK_9 =  models.CharField(max_length = 300,
-                             choices = FK__choices,
-                             verbose_name = 'FK_9',
-                             default=None,
-                             blank = False)
-    FK_10 =  models.CharField(max_length = 300,
-                             choices = FK__choices,
-                             verbose_name = 'FK_10',
-                             default=None,
-                             blank = False)
-    FK_11 =  models.CharField(max_length = 300,
-                             choices = FK__choices,
-                             verbose_name = 'FK_11',
-                             default=None,
-                             blank = False)
-    FK_12 = models.CharField(max_length = 300,
- 			    choices = FK__choices,
-			  verbose_name = 'FK_12',
-			default = None,
-			blank = False)
-    FK_13 = models.CharField(max_length = 300,
- 			    choices = FK__choices,
-			  verbose_name = 'FK_13',
-			default = None,
-			blank = False)
-    FK_14 = models.CharField(max_length = 300,
- 			    choices = FK__choices,
-			  verbose_name = 'FK_14',
-			default = None,
-			blank = False)
-    FK_15 = models.CharField(max_length = 300,
- 			    choices = FK__choices,
-			  verbose_name = 'FK_15',
-			default = None,
-			blank = False)
+    # FK_9 =  models.CharField(max_length = 300,
+    #                          choices = FK__choices,
+    #                          verbose_name = 'FK_9',
+    #                          default=None,
+    #                          blank = False)
+    # FK_10 =  models.CharField(max_length = 300,
+    #                          choices = FK__choices,
+    #                          verbose_name = 'FK_10',
+    #                          default=None,
+    #                          blank = False)
+    # FK_11 =  models.CharField(max_length = 300,
+    #                          choices = FK__choices,
+    #                          verbose_name = 'FK_11',
+    #                          default=None,
+    #                          blank = False)
+    # FK_12 = models.CharField(max_length = 300,
+ 	# 		    choices = FK__choices,
+	# 		  verbose_name = 'FK_12',
+	# 		default = None,
+	# 		blank = False)
+    # # FK_13 = models.CharField(max_length = 300,
+ 	# 		    choices = FK__choices,
+	# 		  verbose_name = 'FK_13',
+	# 		default = None,
+	# 		blank = False)
+    # FK_14 = models.CharField(max_length = 300,
+ 	# 		    choices = FK__choices,
+	# 		  verbose_name = 'FK_14',
+	# 		default = None,
+	# 		blank = False)
+    # FK_15 = models.CharField(max_length = 300,
+ 	# 		    choices = FK__choices,
+	# 		  verbose_name = 'FK_15',
+	# 		default = None,
+	# 		blank = False)
       
 
 
@@ -95,8 +95,81 @@ class Personal_info(models.Model):
 
     def __str__(self):
         return "{}".format(self.id)
+
+class Ghs_fk(models.Model):
+    id = models.AutoField(primary_key = True)
+    title = models.CharField(max_length=50,
+		editable=False,
+                default='Cooking_knowledge')
+
+
+    person = models.ForeignKey(
+        Personal_info,
+        on_delete = models.CASCADE
+    )
+
+    FK_9 = models.CharField(max_length = 300,
+                            choices = FK__choices,
+                            verbose_name = 'FK_1',
+                            default = None,
+                            blank = False)
+    FK_10 = models.CharField(max_length = 300,
+                            choices = FK__choices,
+                            verbose_name = 'FK_2',
+                            default = None,
+                            blank = False)
+    FK_11 = models.CharField(max_length = 300,
+                            choices = FK__choices,
+                            verbose_name = 'FK_3',
+                            default = None,
+                            blank =False)
+    FK_12 =  models.CharField(max_length = 300,
+                            choices = FK__choices,
+                            verbose_name = 'FK_4',
+                            default=None,
+                            blank = False)
+    
+    CS_9 =  models.CharField(max_length = 300,
+                             choices = FK__choices,
+                             verbose_name = 'CS_9',
+                             default=None,
+                             blank = False)
+    CS_10 =  models.CharField(max_length = 300,
+                             choices = FK__choices,
+                             verbose_name = 'CS_10',
+                             default=None,
+                             blank = False)
+    CS_11 =  models.CharField(max_length = 300,
+                             choices = FK__choices,
+                             verbose_name = 'CS_11',
+                             default=None,
+                             blank = False)
+    CS_12 = models.CharField(max_length = 300,
+ 			    choices = FK__choices,
+			  verbose_name = 'CS_12',
+			default = None,
+			blank = False)
+    CS_13 = models.CharField(max_length = 300,
+ 			    choices = FK__choices,
+			  verbose_name = 'CS_13',
+			default = None,
+			blank = False)
+    CS_14 = models.CharField(max_length = 300,
+ 			    choices = FK__choices,
+			  verbose_name = 'CS_14',
+			default = None,
+			blank = False)
+
+    class Meta:
+        verbose_name = 'Ghs_fk'
+        ordering = ['id']
+        db_table = 'ghs_fk'
+    
+    def __str__(self):
+    	return "{}".format(self.id)
     
     
+
     
 class Salad(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -306,6 +379,7 @@ class recipes(models.Model):
         return self.Name
 
 class  recipesRating(models.Model):
+    
     id = models.AutoField(primary_key=True)
     rating = models.CharField( max_length=500,
                               choices = ratings,
@@ -333,5 +407,6 @@ class  recipesRating(models.Model):
         verbose_name = "Ratings"
         ordering  = ['id']
         db_table = 'recipesRatings'
+        unique_together = (("person","recipes"))
     def __str__(self):
         return self.recipes.Name
